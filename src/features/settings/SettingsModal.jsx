@@ -28,7 +28,7 @@ function SettingsModal({
         <img
           src={iconSrc}
           alt={`${item.label} icon`}
-          className="h-3.5 w-3.5 object-contain opacity-95"
+          className="h-3.5 w-3.5 object-contain opacity-95 dark:brightness-0 dark:invert"
           loading="lazy"
         />
       )
