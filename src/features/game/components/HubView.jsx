@@ -27,7 +27,7 @@ function HubView({
           onClick={onOpenSettings}
         >
           <Settings size={16} />
-          设置
+          设置 AI KEY
         </button>
       </header>
 

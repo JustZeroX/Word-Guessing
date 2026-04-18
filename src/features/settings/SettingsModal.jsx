@@ -22,10 +22,11 @@ function SettingsModal({
   const modelSuggestions = getProviderModelSuggestions(formState.provider)
 
   const renderProviderIcon = (item) => {
-    if (item.iconUrl) {
+    if (item.iconFile) {
+      const iconSrc = `${import.meta.env.BASE_URL}provider-icons/${item.iconFile}`
       return (
         <img
-          src={item.iconUrl}
+          src={iconSrc}
           alt={`${item.label} icon`}
           className="h-3.5 w-3.5 object-contain opacity-95"
           loading="lazy"
