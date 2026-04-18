@@ -1,8 +1,8 @@
-# AI 语义猜词（无限爬塔）
+# 猜词（无限版）
 
 [English Version](./README.en.md)
 
-一个基于大模型 Embedding 的前端猜词游戏（BYOK 模式）。  
+一个基于大模型 Embedding 的前端猜词游戏（BYOK 模式）。
 核心玩法：AI 出题 -> 语义相似度反馈 -> 无限通关爬塔。
 
 ## 目录
@@ -19,7 +19,6 @@
 - [仓库说明](#仓库说明)
 - [本地存储结构](#本地存储结构)
 - [常见问题](#常见问题)
-- [提交到 GitHub（建议流程）](#提交到-github建议流程)
 
 ## 功能亮点
 
@@ -82,25 +81,21 @@ npm run preview
 ### 推荐默认配置
 
 #### 硅基流动
-
 - Base URL: `https://api.siliconflow.cn/v1`
 - Chat: `deepseek-ai/DeepSeek-V3.2`
 - Embedding: `netease-youdao/bce-embedding-base_v1`
 
 #### 阿里云百炼
-
 - Base URL: `https://dashscope.aliyuncs.com/compatible-mode/v1`
 - Chat: `qwen3.6-flash`
 - Embedding: `text-embedding-v4`
 
 #### OpenAI
-
 - Base URL: `https://api.openai.com/v1`
 - Chat: `gpt-4o-mini`
 - Embedding: `text-embedding-3-small`
 
 #### 自定义（OpenAI 兼容）
-
 - 填写兼容 OpenAI 协议的 Base URL、Chat 模型、Embedding 模型
 
 ## NPM 脚本
@@ -127,24 +122,22 @@ npm run release:check
 
 ## .env 示例
 
-项目已提供 `.env.example`。可复制为 `.env` 后按需填写：
-
 ```bash
 cp .env.example .env
 ```
 
-仅需填写你要测试的厂商 Key；未填写的厂商会在 `test:providers` 中自动跳过。
+仅需填写要测试的厂商 Key；未填写的厂商会在 `test:providers` 中自动跳过。
 
 ## 安全策略
 
 - 默认会话模式：不勾选“记住 Key”时，API Key 仅保存在 `sessionStorage`
 - 勾选“记住 Key”后，Key 才会写入 `localStorage`
-- 发布前可运行 `npm run release:check`，检查：
+- 发布前运行 `npm run release:check` 检查：
   - 代码中是否包含疑似密钥
   - `.env.example` 是否误填真实 Key
   - 调试答案开关是否受 `import.meta.env.DEV` 保护
 
-> 提醒：请勿提交 `.env` 到 GitHub，仓库已通过 `.gitignore` 默认忽略。
+> 请勿提交 `.env` 到 GitHub（仓库已在 `.gitignore` 中忽略）。
 
 ## 仓库说明
 
@@ -152,7 +145,7 @@ cp .env.example .env
 
 ## 本地存储结构
 
-- `llm_settings`：模型配置（不直接存明文 key）
+- `llm_settings`：模型配置（不直接存明文 Key）
 - `llm_api_key_local`：记住 Key 时使用
 - `llm_api_key_session`：会话模式使用
 - `player_progress`：爬塔进度与历史记录
@@ -160,29 +153,11 @@ cp .env.example .env
 
 ## 常见问题
 
-- **API Key 看起来是空的但还能生成？**  
-  通常是设置弹窗草稿与已保存配置不一致，需点击「保存配置」使改动生效。
-
-- **401 / 403 错误**  
-  检查 Key 是否有效、模型是否有权限、账户是否有可用额度。
-
-- **404 错误**  
+- **API Key 看起来是空的但还能生成？**
+  设置弹窗草稿与已保存配置可能不一致，点击「保存配置」后生效。
+- **401 / 403 错误**
+  检查 Key 是否有效、模型权限与账户额度。
+- **404 错误**
   检查 Base URL，常见为缺失 `/v1` 或百炼兼容路径错误。
-
-- **429 错误**  
+- **429 错误**
   触发限流，稍后重试或降低调用频率。
-
-## 提交到 GitHub（建议流程）
-
-```bash
-# 1) 本地检查
-npm run lint
-npm run release:check
-
-# 2) 提交代码（确保 .env 未被提交）
-git add .
-git commit -m "docs: update README for GitHub release"
-
-# 3) 推送
-git push
-```
