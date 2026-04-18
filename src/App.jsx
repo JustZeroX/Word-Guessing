@@ -88,6 +88,7 @@ function App() {
             <HubView
               progress={game.playerProgress}
               canPlay={game.canPlay}
+              canOpenPokedex={game.playerProgress.highestFloor > 0 && game.playerProgress.pokedex.length > 0}
               canResetProgress={game.playerProgress.pokedex.length > 0}
               hasChallengeInProgress={game.hasChallengeInProgress}
               isGenerating={game.isGenerating}

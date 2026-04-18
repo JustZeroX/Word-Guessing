@@ -3,6 +3,7 @@ import { BookOpenText, Play, Settings } from 'lucide-react'
 function HubView({
   progress,
   canPlay,
+  canOpenPokedex,
   canResetProgress,
   hasChallengeInProgress,
   isGenerating,
@@ -44,13 +45,15 @@ function HubView({
               : '开始挑战'}
         </button>
 
-        <button
-          className="inline-flex w-full max-w-[360px] items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-indigo-400 hover:text-indigo-700 sm:w-auto sm:max-w-none sm:min-w-[170px] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-indigo-400 dark:hover:text-indigo-200"
-          onClick={onOpenPokedex}
-        >
-          <BookOpenText size={16} />
-          历史关卡
-        </button>
+        {canOpenPokedex && (
+          <button
+            className="inline-flex w-full max-w-[360px] items-center justify-center gap-2 rounded-xl border border-indigo-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-indigo-400 hover:text-indigo-700 sm:w-auto sm:max-w-none sm:min-w-[170px] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-indigo-400 dark:hover:text-indigo-200"
+            onClick={onOpenPokedex}
+          >
+            <BookOpenText size={16} />
+            历史关卡
+          </button>
+        )}
         {canResetProgress && (
           <button
             className="inline-flex w-full max-w-[360px] items-center justify-center gap-2 rounded-xl border border-rose-500/40 bg-rose-500/10 px-5 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-500/20 sm:w-auto sm:max-w-none sm:min-w-[170px] dark:text-rose-200"
