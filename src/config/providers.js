@@ -2,6 +2,7 @@ export const PROVIDER_PRESETS = {
   openai: {
     id: 'openai',
     label: 'OpenAI',
+    iconUrl: '/provider-icons/openai.svg',
     baseUrl: 'https://api.openai.com/v1',
     chatModel: 'gpt-4o-mini',
     embeddingModel: 'text-embedding-3-small',
@@ -11,6 +12,7 @@ export const PROVIDER_PRESETS = {
   siliconflow: {
     id: 'siliconflow',
     label: '硅基流动',
+    iconUrl: '/provider-icons/siliconflow.svg',
     baseUrl: 'https://api.siliconflow.cn/v1',
     chatModel: 'deepseek-ai/DeepSeek-V3.2',
     embeddingModel: 'netease-youdao/bce-embedding-base_v1',
@@ -20,6 +22,7 @@ export const PROVIDER_PRESETS = {
   aliyun: {
     id: 'aliyun',
     label: '阿里云百炼',
+    iconUrl: '/provider-icons/bailian.svg',
     baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
     chatModel: 'qwen3.6-flash',
     embeddingModel: 'text-embedding-v4',
@@ -29,6 +32,7 @@ export const PROVIDER_PRESETS = {
   custom: {
     id: 'custom',
     label: '自定义（OpenAI 兼容）',
+    iconUrl: '',
     baseUrl: 'https://your-openai-compatible-endpoint/v1',
     chatModel: 'your-chat-model',
     embeddingModel: 'your-embedding-model',
@@ -53,6 +57,7 @@ export function getProviderOptions() {
     return {
       value: item.id,
       label: item.label,
+      iconUrl: item.iconUrl || '',
     }
   })
 }

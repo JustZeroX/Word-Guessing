@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { X, Save, KeyRound, WandSparkles } from 'lucide-react'
+import { X, Save, KeyRound, SlidersHorizontal, WandSparkles } from 'lucide-react'
 import { getProviderModelSuggestions, getProviderOptions } from '../../config/providers'
 import { applyProviderPreset } from './settingsStorage'
 
@@ -20,6 +20,20 @@ function SettingsModal({
   const [testTrace, setTestTrace] = useState('')
   const providerOptions = getProviderOptions()
   const modelSuggestions = getProviderModelSuggestions(formState.provider)
+
+  const renderProviderIcon = (item) => {
+    if (item.iconUrl) {
+      return (
+        <img
+          src={item.iconUrl}
+          alt={`${item.label} icon`}
+          className="h-3.5 w-3.5 object-contain opacity-95"
+          loading="lazy"
+        />
+      )
+    }
+    return <SlidersHorizontal size={14} />
+  }
 
   if (!open) return null
 
@@ -157,6 +171,9 @@ function SettingsModal({
                   }`}
                   onClick={() => updateProvider(item.value)}
                 >
+                  <span className="mr-1.5 inline-flex items-center align-middle">
+                    {renderProviderIcon(item)}
+                  </span>
                   {item.label}
                 </button>
               ))}

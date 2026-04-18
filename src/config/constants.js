@@ -7,12 +7,12 @@ export const STORAGE_KEYS = {
 }
 
 export const DEFAULT_LLM_SETTINGS = {
-  provider: 'openai',
-  baseUrl: 'https://api.openai.com/v1',
+  provider: 'siliconflow',
+  baseUrl: 'https://api.siliconflow.cn/v1',
   apiKey: '',
   rememberApiKey: false,
-  chatModel: 'gpt-4o-mini',
-  embeddingModel: 'text-embedding-3-small',
+  chatModel: 'deepseek-ai/DeepSeek-V3.2',
+  embeddingModel: 'netease-youdao/bce-embedding-base_v1',
 }
 
 export const SECRET_KEY = 'semantic_tower_xxx'
