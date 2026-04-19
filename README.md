@@ -151,6 +151,7 @@ cp .env.example .env
 - `llm_api_key_session`：会话模式使用
 - `player_progress`：爬塔进度与历史记录
 - `current_game_state`：当前对局状态
+- `recent_generated_words`：最近出题词池（用于降低重复出题概率）
 
 ## 常见问题
 
@@ -162,3 +163,5 @@ cp .env.example .env
   检查 Base URL，常见为缺失 `/v1` 或百炼兼容路径错误。
 - **429 错误**
   触发限流，稍后重试或降低调用频率。
+- **为什么第一关总是“苹果”？**
+  项目现在会记录最近出题词并参与去重，清除关卡后也会继续避开最近重复词。

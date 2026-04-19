@@ -4,6 +4,7 @@ export const STORAGE_KEYS = {
   llmApiKeySession: 'llm_api_key_session',
   playerProgress: 'player_progress',
   currentGameState: 'current_game_state',
+  recentGeneratedWords: 'recent_generated_words',
 }
 
 export const DEFAULT_LLM_SETTINGS = {

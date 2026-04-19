@@ -5,9 +5,11 @@ import { decryptTargetWord } from '../../lib/utils/crypto'
 import { cosineSimilarity } from '../../lib/utils/similarity'
 import { generateLevel } from './levelGenerator'
 import {
+  appendRecentGeneratedWord,
   clearCurrentGameState,
   getCurrentGameState,
   getPlayerProgress,
+  getRecentGeneratedWords,
   resetAllGameProgress,
   saveCurrentGameState,
   savePlayerProgress,
@@ -54,7 +56,9 @@ export function useGameEngine(settings) {
   }, [])
 
   const getExcludedWords = useCallback(() => {
-    return playerProgress.pokedex.map((item) => item.targetWord).filter(Boolean)
+    const passedWords = playerProgress.pokedex.map((item) => item.targetWord).filter(Boolean)
+    const recentWords = getRecentGeneratedWords()
+    return Array.from(new Set([...passedWords, ...recentWords]))
   }, [playerProgress.pokedex])
 
   const createAndEnterLevel = useCallback(async (floor, options = {}) => {
@@ -62,9 +66,13 @@ export function useGameEngine(settings) {
 
     setIsGenerating(true)
     try {
-      const levelState = await generateLevel(settings, floor, {
+      const levelResult = await generateLevel(settings, floor, {
         excludedWords: getExcludedWords(),
       })
+      const { generatedWord, ...levelState } = levelResult
+      if (generatedWord) {
+        appendRecentGeneratedWord(generatedWord)
+      }
       saveCurrentGameState(levelState)
       setCurrentGameState(levelState)
       setGuessInput('')

@@ -152,6 +152,7 @@ Providers without keys are skipped by `test:providers`.
 - `llm_api_key_session`: key store for session mode
 - `player_progress`: floor progress and history
 - `current_game_state`: current run state
+- `recent_generated_words`: recent generated target words used for anti-repeat filtering
 
 ## FAQ
 
@@ -163,3 +164,5 @@ Providers without keys are skipped by `test:providers`.
   Check Base URL, especially missing `/v1` or wrong Bailian-compatible path.
 - **429 errors**
   Rate limit exceeded. Retry later or reduce request frequency.
+- **Why does level 1 often return the same word (like "苹果")?**
+  The app now keeps a recent generated-word pool and uses it in exclusion filtering, so repeated starts and resets avoid recent duplicates.

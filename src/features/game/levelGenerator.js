@@ -93,6 +93,7 @@ export async function generateLevel(settings, floor, options = {}) {
   const clue = `🏷️ 提示：${[...word].length}个字`
 
   return {
+    generatedWord: word,
     floor,
     encryptedTargetWord,
     targetVector,
