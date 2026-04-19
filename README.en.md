@@ -28,6 +28,7 @@ Core loop: AI generates a target word -> semantic similarity feedback -> infinit
 - AES encryption for target-word storage
 - Local progress persistence (current floor, highest floor, history)
 - One-click Chat/Embedding connectivity test in settings
+- LLM settings capability is modularized (`packages/llm-settings-core` + `packages/llm-settings-react`) for cross-project reuse
 - Responsive UI for mobile and desktop
 
 ## Current Product Decisions

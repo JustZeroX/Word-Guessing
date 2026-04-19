@@ -28,6 +28,11 @@ dist-ssr
 
 # 临时视频帧
 .tmp-video-frames
+# 临时图标
+.tmp-icons
 
 # 本地产品设计文档（不上传）
 游戏设计文档.md
+
+# Cursor 项目规则（本地使用，不提交）
+.cursor

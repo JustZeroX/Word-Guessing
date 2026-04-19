@@ -28,6 +28,7 @@
 - 目标词 AES 加密存储，降低本地明文泄露风险
 - 本地进度持久化（当前关卡、最高层、历史通关记录）
 - 设置页一键测试 Chat / Embedding 连通性
+- 大模型配置能力已模块化（`packages/llm-settings-core` + `packages/llm-settings-react`），便于跨项目复用
 - 响应式 UI（移动端与桌面端）
 
 ## 当前产品决策

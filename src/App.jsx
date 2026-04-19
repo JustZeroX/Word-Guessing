@@ -113,6 +113,10 @@ function App() {
                 onGuessSubmit={game.submitGuess}
                 onBack={game.toHub}
               />
+            ) : game.winResult ? (
+              <div className="rounded-2xl border border-slate-300 bg-white/85 p-5 text-sm text-slate-700 shadow-lg shadow-slate-200/60 dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">
+                正在展示通关结果...
+              </div>
             ) : (
               <div className="rounded-2xl border border-slate-300 bg-white/85 p-5 text-sm text-slate-700 shadow-lg shadow-slate-200/60 dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">
                 当前没有进行中的关卡，请返回大厅重新开始挑战。

@@ -40,7 +40,7 @@ function HubView({
           <Play size={16} />
           {isGenerating
             ? '正在生成关卡...'
-            : hasChallengeInProgress
+            : progress.currentFloor > 1 || hasChallengeInProgress
               ? '继续挑战'
               : '开始挑战'}
         </button>

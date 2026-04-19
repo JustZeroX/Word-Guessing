@@ -1,20 +1,7 @@
-import { useCallback, useMemo, useState } from 'react'
+import { createUseLlmSettings } from '../../../packages/llm-settings-react/src/index'
 import { getLlmSettings, saveLlmSettings } from './settingsStorage'
 
-export function useLlmSettings() {
-  const [settings, setSettings] = useState(() => getLlmSettings())
-
-  const updateSettings = useCallback((payload) => {
-    const nextSettings = { ...settings, ...payload }
-    const isSaved = saveLlmSettings(nextSettings)
-    if (isSaved) {
-      setSettings(nextSettings)
-    }
-    return isSaved
-  }, [settings])
-
-  return useMemo(
-    () => ({ settings, updateSettings }),
-    [settings, updateSettings],
-  )
-}
+export const useLlmSettings = createUseLlmSettings({
+  getLlmSettings,
+  saveLlmSettings,
+})

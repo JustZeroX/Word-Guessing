@@ -3,9 +3,13 @@ import { X } from 'lucide-react'
 
 function PokedexModal({ open, records, onClose }) {
   const [selectedFloor, setSelectedFloor] = useState(null)
+  const orderedRecords = useMemo(
+    () => [...records].sort((a, b) => a.floor - b.floor),
+    [records],
+  )
   const selectedRecord = useMemo(
-    () => records.find((item) => item.floor === selectedFloor) || null,
-    [records, selectedFloor],
+    () => orderedRecords.find((item) => item.floor === selectedFloor) || null,
+    [orderedRecords, selectedFloor],
   )
 
   if (!open) return null
@@ -31,14 +35,14 @@ function PokedexModal({ open, records, onClose }) {
         </header>
 
         <div className="max-h-[68vh] space-y-3 overflow-y-auto pr-1">
-          {records.length === 0 ? (
+          {orderedRecords.length === 0 ? (
             <p className="rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-500 dark:border-slate-700">
               暂无通关记录。
             </p>
           ) : (
             <>
               <div className="flex flex-wrap gap-2">
-                {records.map((record) => (
+                {orderedRecords.map((record) => (
                   <button
                     key={`${record.floor}-${record.date}`}
                     className={`rounded-lg border px-3 py-1.5 text-sm transition ${

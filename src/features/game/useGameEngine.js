@@ -142,15 +142,14 @@ export function useGameEngine(settings) {
         const nextProgress = {
           currentFloor: playerProgress.currentFloor + 1,
           highestFloor: Math.max(playerProgress.highestFloor, currentGameState.floor),
-          pokedex: [record, ...playerProgress.pokedex],
+          pokedex: [...playerProgress.pokedex, record],
         }
 
         savePlayerProgress(nextProgress)
         clearCurrentGameState()
         setPlayerProgress(nextProgress)
-        setCurrentGameState(null)
         setWinResult(record)
-        setView('hub')
+        setView('game')
         setIsAnswerModalOpen(false)
         setRevealedAnswer('')
       }
@@ -163,9 +162,13 @@ export function useGameEngine(settings) {
     }
   }, [currentGameState, guessInput, playerProgress, pushNotice, settings])
 
-  const closeWinModal = useCallback(() => setWinResult(null), [])
+  const closeWinModal = useCallback(() => {
+    setWinResult(null)
+    setCurrentGameState(null)
+  }, [])
   const backFromWinModal = useCallback(() => {
     setWinResult(null)
+    setCurrentGameState(null)
     setView('hub')
   }, [])
   const goToNextLevel = useCallback(async () => {

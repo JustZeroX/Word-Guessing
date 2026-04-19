@@ -72,7 +72,6 @@ function GameplayView({
       </div>
 
       <div className="sticky top-2 z-10 mt-4 rounded-2xl border border-indigo-100 bg-white/95 p-3 shadow-lg shadow-indigo-100/60 backdrop-blur dark:border-slate-800 dark:bg-slate-900/95 dark:shadow-slate-950/50 sm:top-3 sm:p-4">
-        <p className="mb-2 text-xs text-slate-500 dark:text-slate-400">已猜 {gameState.guesses.length} 次</p>
         <div className="relative">
           <input
             className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 pr-24 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-indigo-500/80 focus:ring-2 focus:ring-indigo-500/25 dark:border-slate-700/70 dark:bg-slate-900/90 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-indigo-400/80"
@@ -96,6 +95,7 @@ function GameplayView({
       </div>
 
       <div className="mt-5 space-y-3">
+        <p className="text-center text-xs text-slate-500 dark:text-slate-400">已猜 {gameState.guesses.length} 次</p>
         {gameState.guesses.length === 0 ? (
           <p className="rounded-xl border border-dashed border-slate-300 p-5 text-sm text-slate-500 dark:border-slate-700">
             还没有猜测记录，先提交一个词试试语义温度。
